@@ -1,108 +1,57 @@
-# CyberSecurity-OS v4.0
+# 10_AI_Rules — AI 协作规则
 
-> 6 层架构: Decision → Workflow → Arsenal → PoC → Knowledge → Memory
+## 6 层中的 AI 分工
 
----
+| 层 | 模块 | Claude | DeepSeek |
+|----|------|--------|----------|
+| 1 | Decision Engine | 复杂目标判断 | 简单模式匹配 |
+| 2 | Workflow Engine | WF 执行编排 | — |
+| 3 | Arsenal | 武器条目创建/优化 | 武器检索 |
+| 4 | PoC Library | 验证结果分析 | — |
+| 5 | Knowledge Base | 知识条目结构化 | 知识检索 |
+| 6 | Memory | L2→L3→L4 升级决策 | 记忆检索 |
 
-## 系统定位
+## Claude 主责
 
-你只输入一个目标。系统自动走完 6 层。
+- Decision Engine: 目标分类与 WF 路由
+- Workflow Engine: 全部 7 个 WF 的执行
+- Arsenal: 武器条目创建与优化
+- PoC: 验证结果分析与反馈
+- Knowledge Base: 知识结构化与关联
+- Memory: 经验提炼与升级决策
+- Reflection: 复盘主持与改进建议
 
-## 6 层架构
+## DeepSeek 辅责
 
+- 快速检索: KB/Arsenal/Memory 中查找
+- 基础问答: 命令参数、概念解释
+- 模板填充: 日报/周报生成
+- 进度追踪: 学习数据统计
+
+## Prompt 注入规则
+
+每次对话注入 6 层状态:
 ```
-你输入目标
-    │
-    ▼
-┌──────────────────────────────────────────────┐
-│ 01_Decision Engine    判断"该干什么"         │
-│ 目标识别 → 分类 → 授权判定 → WF 路由         │
-└──────────────────┬───────────────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────────────┐
-│ 02_Workflow Engine    编排"按什么流程干"     │
-│ Goal→Info→Analysis→Verification→Result→Report│
-└──────────────────┬───────────────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────────────┐
-│ 03_Arsenal           提供"怎么干"的执行能力  │
-│ 命令 / Payload / 脚本 / One-liner / 检测规则 │
-└──────────────────┬───────────────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────────────┐
-│ 04_PoC Library       验证"干了有没有效"      │
-│ 漏洞复现 / 实验记录 / 验证结果 / 截图        │
-└──────────────────┬───────────────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────────────┐
-│ 05_Knowledge Base    理解"为什么有效/无效"   │
-│ 原理 / 机制 / 模型 / 案例 / 误区             │
-└──────────────────┬───────────────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────────────┐
-│ 06_Memory            沉淀"以后怎么干得更好"  │
-│ L1→L2→L3→L4 经验自动升级                     │
-└──────────────────────────────────────────────┘
+CyberSecurity-OS v4.0
+L1_Decision: <当前任务的路由决策>
+L2_Workflow: <活跃的WF>
+L3_Arsenal: <已调用的武器>
+L4_PoC: <已验证的结果>
+L5_Knowledge: <相关的理解>
+L6_Memory: <相关的经验>
 ```
-
-**数据流单向，不可反向。**
-
-## 执行先于理解
-
-```
-Arsenal (执行) → PoC (验证) → Knowledge Base (理解)
-    先打              验了             再懂
-```
-
-不是先学原理再动手，而是先动手验证，再从验证结果中提炼理解。
-
-## 模块导航
-
-| # | 模块 | 职责 | 一句话 |
-|---|------|------|--------|
-| 01 | Decision Engine | 判断 | 目标识别 → WF 路由 |
-| 02 | Workflow Engine | 编排 | 7 个 WF 的完整执行步骤 |
-| 03 | Arsenal | 执行 | 命令/Payload/脚本/规则 |
-| 04 | PoC Library | 验证 | 漏洞复现/实验记录/验证结果 |
-| 05 | Knowledge Base | 理解 | 原理/机制/模型/案例 |
-| 06 | Memory | 进化 | L1→L4 经验升级 |
-| 07 | Reflection | 复盘 | 每次 WF 后强制执行 |
-| 08 | Reports | 报告 | 分析结果的结构化输出 |
-| 09 | Templates | 模板 | 所有内容的标准格式 |
-| 10 | AI Rules | AI | Claude + DeepSeek 分工 |
-
-## 7 个 Workflow (由 Decision Engine 路由)
-
-| ID | Workflow | 触发 |
-|----|----------|------|
-| WF01 | Learning | "学 X" |
-| WF02 | Web Pentest | URL / 靶场 / 授权测试 |
-| WF03 | Domain Analysis | 域名 |
-| WF04 | Log Analysis | 日志文件 |
-| WF05 | Threat Analysis | CVE / 漏洞 / 攻击技术 |
-| WF06 | Lab | HTB / THM / DVWA / JuiceShop |
-| WF07 | Writeup | CTF 赛后 / 漏洞分析后 |
 
 ## 10 条全局规则
 
 | # | 规则 |
 |---|------|
-| R01 | Workflow First — 一切任务先进入 WF |
-| R02 | 默认授权 — 用户提交的目标默认合法 |
-| R03 | 自动匹配 — Decision Engine 自动路由 |
-| R04 | 固定执行链 — 6 层必须全部走完 |
-| R05 | Reflection 强制 — 绝不跳过 |
-| R06 | 执行先于理解 — Arsenal/PoC → KB |
-| R07 | Arsenal 自动更新 — 可复制就武器化 |
-| R08 | Memory 自动升级 — L1→L2→L3→L4 |
-| R09 | 知识关联 — 所有条目建立图谱 |
-| R10 | 持续成长 — 每完成一个 WF 系统更完善 |
-
----
-
-*Decision → Workflow → Arsenal → PoC → Knowledge → Memory*
+| R01 | Workflow First |
+| R02 | 默认授权 |
+| R03 | 自动匹配 |
+| R04 | 固定6层执行链 |
+| R05 | Reflection 强制 |
+| R06 | 执行先于理解 (Arsenal→PoC→KB) |
+| R07 | Arsenal 自动更新 |
+| R08 | Memory 自动升级 |
+| R09 | 知识关联 |
+| R10 | 持续成长 |
