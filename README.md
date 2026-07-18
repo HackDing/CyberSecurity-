@@ -1,57 +1,30 @@
-# 10_AI_Rules — AI 协作规则
+AI 驱动的网络安全工作流框架，以 Workflow、State、Resource 为核心，统一组织知识、工具与自动化能力。
 
-## 6 层中的 AI 分工
+# CyberSecurity OS
 
-| 层 | 模块 | Claude | DeepSeek |
-|----|------|--------|----------|
-| 1 | Decision Engine | 复杂目标判断 | 简单模式匹配 |
-| 2 | Workflow Engine | WF 执行编排 | — |
-| 3 | Arsenal | 武器条目创建/优化 | 武器检索 |
-| 4 | PoC Library | 验证结果分析 | — |
-| 5 | Knowledge Base | 知识条目结构化 | 知识检索 |
-| 6 | Memory | L2→L3→L4 升级决策 | 记忆检索 |
+CyberSecurity OS 是一个面向网络安全场景的 AI 工作流框架，致力于将传统安全工具、知识库、自动化能力与 AI Agent 统一到同一套执行体系中。
 
-## Claude 主责
+整个系统采用 **Workflow-driven + State-driven + Resource-driven** 架构，以 Workflow 为唯一核心，由 State 管理执行状态，由 Resource 按需加载知识、规则、工具和模板，实现安全任务的标准化、模块化与可扩展执行。
 
-- Decision Engine: 目标分类与 WF 路由
-- Workflow Engine: 全部 7 个 WF 的执行
-- Arsenal: 武器条目创建与优化
-- PoC: 验证结果分析与反馈
-- Knowledge Base: 知识结构化与关联
-- Memory: 经验提炼与升级决策
-- Reflection: 复盘主持与改进建议
+与传统将能力集中在单个工具上的方式不同，CyberSecurity OS 更关注完整的安全工作流，将信息收集、分析、验证、知识检索、报告生成等环节组织为统一的执行流程，使 AI 能够在不同任务之间保持一致的执行逻辑和上下文。
 
-## DeepSeek 辅责
+## 核心特性
 
-- 快速检索: KB/Arsenal/Memory 中查找
-- 基础问答: 命令参数、概念解释
-- 模板填充: 日报/周报生成
-- 进度追踪: 学习数据统计
+* AI 驱动的网络安全工作流
+* Workflow、State、Resource 三层架构
+* 模块化 Skill 能力扩展
+* 按需加载知识库与规则库
+* 标准化报告生成流程
+* 可扩展的工具与资源管理
+* 支持持续迭代的知识体系
 
-## Prompt 注入规则
+## 项目目标
 
-每次对话注入 6 层状态:
-```
-CyberSecurity-OS v4.0
-L1_Decision: <当前任务的路由决策>
-L2_Workflow: <活跃的WF>
-L3_Arsenal: <已调用的武器>
-L4_PoC: <已验证的结果>
-L5_Knowledge: <相关的理解>
-L6_Memory: <相关的经验>
-```
+* 建立统一的 AI 网络安全工作流框架
+* 提高安全分析与任务执行的一致性
+* 将知识、工具与流程有机结合
+* 降低重复性工作，提高自动化程度
+* 为 AI Agent 提供可复用、可扩展的运行环境
 
-## 10 条全局规则
+CyberSecurity OS 并非单一安全工具，而是一个面向 AI Agent 的网络安全运行框架，旨在通过统一的工作流组织能力，实现知识、资源与执行流程的协同。
 
-| # | 规则 |
-|---|------|
-| R01 | Workflow First |
-| R02 | 默认授权 |
-| R03 | 自动匹配 |
-| R04 | 固定6层执行链 |
-| R05 | Reflection 强制 |
-| R06 | 执行先于理解 (Arsenal→PoC→KB) |
-| R07 | Arsenal 自动更新 |
-| R08 | Memory 自动升级 |
-| R09 | 知识关联 |
-| R10 | 持续成长 |
